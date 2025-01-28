@@ -1,0 +1,31 @@
+#!/bin/bash
+icon() {
+    [ "$1" -lt "15" ] && printf "" && exit
+    [ "$1" -lt "35" ] && printf "" && exit
+    [ "$1" -lt "60" ] && printf "" && exit
+    [ "$1" -lt "80" ] && printf "" && exit
+    printf ""
+}
+
+IC_CURRENT=""
+IC_PLUG=""
+acpi > /tmp/acpi_info
+
+while read line; do
+  percent="$(echo "$line" | awk -F ', ' '{print $2}' | sed 's/.$//')"
+
+    #Battery Down 
+  if echo "$line" | grep  "Discharging," > /dev/null; then 
+    printf "$(icon "$percent") "
+    printf "$percent%%"
+
+    #Battery Full
+  elif echo "$line" | grep "Full" > /dev/null; then
+    printf "$IC_PLUG 100%%"
+
+    #Charging
+  elif ! echo "$line" | grep "Unknown" > /dev/null; then
+    printf "$IC_CURRENT $percent%%"
+  
+  fi
+done < /tmp/acpi_info

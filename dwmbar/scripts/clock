@@ -1,0 +1,21 @@
+#!/bin/bash
+
+F_clock=$(date '+%H')
+#I_date=""
+I_date="^c#ddff99^ ^d^" # Color verde para el icono de fecha
+case $F_clock in 
+  "00" | "01" | "02") I_clock="󱑖" ;;
+  "03" | "04" | "05") I_clock="󰪞" ;;
+  "06" | "07" | "08") I_clock="󰪟" ;;
+  "09" | "10" | "11") I_clock="󰪠" ;;
+  "12" | "13" | "14") I_clock="󰪡" ;;
+  "15" | "16" | "17") I_clock="󰪢" ;;
+  "18" | "19" | "20") I_clock="󰪣" ;;
+  "21" | "22" | "23") I_clock="󰪤" ;;
+esac
+
+date=$(date "+ %A, %d-%m-%Y")
+clock=$(date "+ %H:%M")
+
+print_format="$I_date $date $I_clock $clock"
+echo $print_format

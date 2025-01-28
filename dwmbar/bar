@@ -1,0 +1,12 @@
+#!/bin/bash
+
+Clock="$($Dir/clock)"
+Dir="$HOME/.config/dwm/dwmbar/scripts"
+while [[ true ]]; do 
+  Clock2="$($Dir/clock2)"
+  Mem="$($Dir/memory)"
+  Vol="$($Dir/volume)"
+  Bat="$($Dir/battery)"
+  xsetroot -name " $Mem $Vol $Clock2"
+  sleep 1
+done
