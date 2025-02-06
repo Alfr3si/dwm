@@ -1,0 +1,271 @@
+#!/bin/bash
+
+nerdfont(){
+  clear
+  Font_name="JetBrainsMono"
+  Font_url="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/JetBrainsMono.zip"
+  FoNt_dir="$HOME/.fonts/"
+  mkdir -p "$FoNt_dir"
+  echo "
+################################################
+#      Descargando $Font_name Nerd Fonts       #
+################################################
+"
+  echo "Descargando $Font_name Nerd Fonts"
+  wget -q --show-progress -O /tmp/${Font_name}.zip "$Font_url"
+
+  echo "Extrayendo archivos en $FoNt_dir..."
+  unzip -o /tmp/${Font_name}.zip -d "$FoNt_dir"
+  rm /tmp/${Font_name}.zip
+  echo "Instalacion de fuentes completada"
+}
+dotfiles(){
+  clear
+  ruta=${HOME}/.config/
+  repo_st="https://github.com/Alfr3si/st.git"
+  repo_dmenu="https://github.com/Alfr3si/dmenu.git"
+  echo "
+################################################
+#              Clonando Dotfiles               #
+################################################
+"
+  echo "Clonando St..."
+  git clone "${repo_st}" "${ruta}/st" 
+  echo -e "\nClonando dmenu..."
+  git clone "${repo_dmenu}" "${ruta}/dmenu"
+  echo -e "\nDotfiles listos"
+}
+compilar(){
+  clear
+    echo "
+################################################
+#           Compilacion de programas           #
+################################################
+"
+  dir_dwm="${HOME}/.config/dwm/"
+  dir_st="${HOME}/.config/st/"
+  dir_dmenu="${HOME}/.config/dmenu/"
+  echo "Compilando dwm..."
+  cd "$dir_dwm"
+  sudo make install clean
+  echo -e "dwm compilado\n"
+  sleep 1
+  echo "Compilando St..."
+  cd "$dir_st"
+  sudo make install clean
+  echo -e "St compilado\n"
+  sleep 1
+  echo "Compilando dmenu"
+  cd "$dir_dmenu"
+  sudo make install clean
+  echo "dmenu compilado"
+  sleep 1
+  clear 
+  echo "
+################################################
+#           Instalacion finalizada             #
+################################################
+"
+echo -e "\'',
+    \' ⣇⣿⠘⣿⣿⣿⡿⡿⣟⣟⢟⢟⢝⠵⡝⣿⡿⢂⣼⣿⣷⣌⠩⡫⡻⣝⠹⢿⣿⣷ ',
+    \' ⡆⣿⣆⠱⣝⡵⣝⢅⠙⣿⢕⢕⢕⢕⢝⣥⢒⠅⣿⣿⣿⡿⣳⣌⠪⡪⣡⢑⢝⣇ ',
+    \' ⡆⣿⣿⣦⠹⣳⣳⣕⢅⠈⢗⢕⢕⢕⢕⢕⢈⢆⠟⠋⠉⠁⠉⠉⠁⠈⠼⢐⢕⢽ ',
+    \' ⡗⢰⣶⣶⣦⣝⢝⢕⢕⠅⡆⢕⢕⢕⢕⢕⣴⠏⣠⡶⠛⡉⡉⡛⢶⣦⡀⠐⣕⢕ ',
+    \' ⡝⡄⢻⢟⣿⣿⣷⣕⣕⣅⣿⣔⣕⣵⣵⣿⣿⢠⣿⢠⣮⡈⣌⠨⠅⠹⣷⡀⢱⢕ ',
+    \' ⡝⡵⠟⠈⢀⣀⣀⡀⠉⢿⣿⣿⣿⣿⣿⣿⣿⣼⣿⢈⡋⠴⢿⡟⣡⡇⣿⡇⡀⢕ ',
+    \' ⡝⠁⣠⣾⠟⡉⡉⡉⠻⣦⣻⣿⣿⣿⣿⣿⣿⣿⣿⣧⠸⣿⣦⣥⣿⡇⡿⣰⢗⢄ ',
+    \' ⠁⢰⣿⡏⣴⣌⠈⣌⠡⠈⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣬⣉⣉⣁⣄⢖⢕⢕⢕ ',
+    \' ⡀⢻⣿⡇⢙⠁⠴⢿⡟⣡⡆⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣵⣵⣿ ',
+    \' ⡻⣄⣻⣿⣌⠘⢿⣷⣥⣿⠇⣿⣿⣿⣿⣿⣿⠛⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿ ',
+    \' ⣷⢄⠻⣿⣟⠿⠦⠍⠉⣡⣾⣿⣿⣿⣿⣿⣿⢸⣿⣦⠙⣿⣿⣿⣿⣿⣿⣿⣿⠟ ',
+    \' ⡕⡑⣑⣈⣻⢗⢟⢞⢝⣻⣿⣿⣿⣿⣿⣿⣿⠸⣿⠿⠃⣿⣿⣿⣿⣿⣿⡿⠁⣠ ',
+    \' ⡝⡵⡈⢟⢕⢕⢕⢕⣵⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⣿⣿⣿⣿⣿⠿⠋⣀⣈⠙ ',
+    \' ⡝⡵⡕⡀⠑⠳⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⢉⡠⡲⡫⡪⡪⡣ ',
+    \'',"
+echo "presiona enter para salir"
+read -r
+exit
+}
+debian(){
+while true; do
+clear
+echo "
+################################################
+#       Script de instalacion para Debian      #
+################################################
+"
+echo -e "Necesitaras las siguientes dependencias\n"
+echo -e "build-essential libxft-dev libxinerama-dev libx11-dev wget unzip\n"
+echo "Desea proceder(y/n)?"
+read y_or_n
+if [[ "$y_or_n" == "y" || "$y_or_n" == "Y" ]]; then
+  sudo apt install -y build-essential libxft-dev libxinerama-dev libx11-dev wget unzip  
+  echo "Herramientas de compilacion instaladas"
+  break
+elif [[ "$y_or_n" == "n" || "$y_or_n" == "N" ]]; then
+  echo "Instalacion cancelada"
+  echo "Enter para salir..."
+  read -r
+  clear
+  exit
+  break
+else
+  echo "Entrada no valida"
+  sleep 1
+fi
+done
+}
+arch(){
+while true; do
+clear
+ echo "
+################################################
+#       Script de instalacion para Arch        #
+################################################
+" 
+echo -e "Necesitaras las siguientes dependencias\n"
+echo -e "base-devel libx11 libxft libxinerama wget unzip\n"
+echo "Desea proceder(y/n)?"
+read y_or_n
+if [[ "$y_or_n" == "y" || "$y_or_n" == "Y" ]]; then
+  sudo pacman -S --noconfirm base-devel libx11 libxft libxinerama wget unzip
+  echo "Herramientas de compilacion instaladas"
+  break
+elif [[ "$y_or_n" == "n" || "$y_or_n" == "N" ]]; then
+  echo "Instalacion cancelada"
+  echo "Enter para salir..."
+  read -r
+  clear
+  exit
+  break
+else
+  echo "Entrada no valida"
+  sleep 1
+fi
+done
+}
+fedora(){
+while true; do
+clear
+echo "
+################################################
+#       Script de instalacion para Fedora      #
+################################################
+"
+echo -e "Necesitaras las siguientes dependencias\n"
+echo -e "development-tools libX11-devel libXft-devel libXinerama-devel wget unzip\n"
+echo "Desea proceder(y/n)?"
+read y_or_n
+if [[ "$y_or_n" == "y" || "$y_or_n" == "Y" ]]; then
+  sudo dnf5 install -y development-tools libX11-devel libXft-devel libXinerama-devel wget unzip
+  echo "Herramientas de compilacion instaladas"
+  break
+elif [[ "$y_or_n" == "n" || "$y_or_n" == "N" ]]; then
+  echo "Instalacion cancelada"
+  echo "Enter para salir..."
+  read -r
+  clear
+  exit
+  break
+else
+  echo "Entrada no valida"
+  sleep 1
+fi
+done
+}
+void(){
+while true; do
+clear
+echo "
+################################################
+#       Script de instalacion para Void        #
+################################################
+"
+echo -e "Necesitaras las siguientes dependencias\n"
+echo -e "base-devel libX11-devel libXft-devel libXinerama-devel wget unzip\n"
+echo "Desea proceder(y/n)?"
+read y_or_n
+if [[ "$y_or_n" == "y" || "$y_or_n" == "Y" ]]; then
+  sudo xbps-install -y base-devel libX11-devel libXft-devel libXinerama-devel wget unzip
+  echo "Herramientas de compilacion instaladas"
+  break
+elif [[ "$y_or_n" == "n" || "$y_or_n" == "N" ]]; then
+  echo "Instalacion cancelada"
+  echo "Enter para salir..."
+  read -r
+  clear
+  exit
+  break
+else
+  echo "Entrada no valida"
+  sleep 1
+fi
+done
+}
+
+while true; do
+  clear
+  echo "
+##############################################
+#       Script de instalacion para dwm       #
+##############################################
+"
+ echo -e "Desea proceder con la instalacion(y/n)?\n"
+ read yes_or_not
+
+  if [[ "$yes_or_not" == "y" || "$yes_or_not" == "Y" ]]; then
+    while true; do
+      clear
+        echo "
+##############################################
+#       Script de instalacion para dwm       #
+##############################################
+"
+      echo "Seleccione su distribucion (1,2,3 or 4)"
+      echo -e "1.-Debian\n2.-Arch\n3.-Fedora\n4.-Void"
+      read distro
+
+      case "$distro" in 
+	1) debian
+	   sleep 1
+	   nerdfont
+	   sleep 1
+	   dotfiles
+	   sleep 1
+	   compilar;;
+	2) arch 
+	   sleep 1
+	   nerdfont
+	   sleep 1
+	   dotfiles
+	   sleep 1
+	   compilar;;
+	3) fedora
+	   sleep 1
+	   nerdfont
+	   sleep 1
+	   dotfiles
+	   sleep 1
+	   compilar;;
+	4) void
+	   sleep 1
+	   nerdfont
+	   sleep 1
+	   dotfiles
+	   sleep 1
+	   compilar;;
+      esac
+
+    done
+
+  elif [[ "$yes_or_not" == "n" || "$yes_or_not" == "N" ]]; then
+    echo "Instalacion cancelada" 
+    break
+  else
+    echo "Entrada no valida"
+    sleep 1
+  fi
+
+done
+
+
