@@ -10,7 +10,7 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:style=Bold:size:12" };
+static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=13" };
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_white[]       = "#ffffff";
 static const char col_gray3[]       = "#7a869f";
@@ -27,12 +27,13 @@ static const char *colors[][3]      = {
 };
 /* tagging */
 
-static const char *tags[] = {"", "", "", "", "", ""};
+static const char *tags[] = {" ", " ", " ", " ", " ", " "};
 
 static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Thunar",    NULL,       NULL,       1 << 2,          0,           -1 },
 	{ "Chromium",  NULL,       NULL,       1 << 3,          0,           -1 },
+	{ "Brave",  NULL,       NULL,       1 << 3,          0,           -1 },
 	{ "vlc",       NULL,       NULL,       1 << 4,          0,           -1 },
 	{ "discord",   NULL,       NULL,       1 << 5,          0,           -1 },
 };
@@ -69,8 +70,8 @@ static const Key keys[] = {
   	{ 0, XK_F1, spawn, SHCMD("pamixer -t && notify-send -t 1000 \"Volumen: mute  \"") },
   	{ 0, XK_F2, spawn, SHCMD("pamixer --decrease 5 && notify-send -t 1000 \"Volumen: $(pamixer --get-volume)%\"") },
 	{ 0, XK_F3, spawn, SHCMD("pamixer --increase 5 && notify-send -t 1000 \"Volumen: $(pamixer --get-volume)%\"") },
-	{ 0, XK_F11, spawn, SHCMD("brightnessctl set 5%- && sleep 0.1 && notify-send -t 1000 \"Brillo: $(brightnessctl g | awk '{print int($1 / 21333 * 100)}')%\"") },
-	{ 0, XK_F12, spawn, SHCMD("brightnessctl set +5% && sleep 0.1 && notify-send -t 1000 \"Brillo: $(brightnessctl g | awk '{print int($1 / 21333 * 100)}')%\"") },		
+	{ 0, XK_F5, spawn, SHCMD("brightnessctl set 5%- && sleep 0.1 && notify-send -t 1000 \"Brillo: $(brightnessctl g | awk '{print int($1 / 21333 * 100)}')%\"") },
+	{ 0, XK_F6, spawn, SHCMD("brightnessctl set +5% && sleep 0.1 && notify-send -t 1000 \"Brillo: $(brightnessctl g | awk '{print int($1 / 21333 * 100)}')%\"") },		
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },

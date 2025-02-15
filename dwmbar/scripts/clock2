@@ -1,8 +1,5 @@
 #!/bin/bash
-
-
 F_clock=$(date '+%I')
-#I_date=""
 I_date="^c#ddff99^ ^d^" # Color verde para el icono de fecha
 case "$F_clock" in
 	"00") I_clock="󱑊" ;;

@@ -7,6 +7,6 @@ while [[ true ]]; do
   Mem="$($Dir/memory)"
   Vol="$($Dir/volume)"
   Bat="$($Dir/battery)"
-  xsetroot -name " $Mem $Vol $Clock2"
+  xsetroot -name " $Mem $Vol $Bat $Clock2"
   sleep 1
 done

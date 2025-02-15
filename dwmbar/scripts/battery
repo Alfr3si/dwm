@@ -7,8 +7,8 @@ icon() {
     printf ""
 }
 
-IC_CURRENT=""
-IC_PLUG=""
+IC_CURRENT=""
+IC_PLUG="󰚦"
 acpi > /tmp/acpi_info
 
 while read line; do
@@ -16,16 +16,21 @@ while read line; do
 
     #Battery Down 
   if echo "$line" | grep  "Discharging," > /dev/null; then 
-    printf "$(icon "$percent") "
-    printf "$percent%%"
-
+    if [ $percent -lt "16" ]; then
+      printf "^c#fe624d^$(icon "$percent") "
+      printf "$percent%%^d^ "
+    elif [ $percent -lt "31" ]; then
+      printf "^c#e8e66e^$(icon "$percent") "
+      printf "$percent%%^d^ "
+    else
+      printf "$(icon "$percent") "
+      printf "$percent%% "
+    fi
     #Battery Full
   elif echo "$line" | grep "Full" > /dev/null; then
-    printf "$IC_PLUG 100%%"
-
+    printf "^c#fe213b^$IC_PLUG 100%%^d^ "
     #Charging
   elif ! echo "$line" | grep "Unknown" > /dev/null; then
-    printf "$IC_CURRENT $percent%%"
-  
+    printf "^c#e8e66e^$IC_CURRENT $percent%%^d^ "
   fi
 done < /tmp/acpi_info
