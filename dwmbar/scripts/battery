@@ -31,6 +31,6 @@ while read line; do
     printf "^c#fe213b^$IC_PLUG 100%%^d^ "
     #Charging
   elif ! echo "$line" | grep "Unknown" > /dev/null; then
-    printf "^c#e8e66e^$IC_CURRENT $percent%%^d^ "
+    printf "^c#a7fe21^$IC_CURRENT $percent%%^d^ "
   fi
 done < /tmp/acpi_info
