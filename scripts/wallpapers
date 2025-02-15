@@ -1,10 +1,10 @@
 #! /bin/bash
 
 # Ruta donde están los wallpapers
-Wallpapers_dir="/home/alfr3d/Wallpapers"
+Wallpapers_dir="$HOME/Wallpapers"
 
 # Obtener solo los nombres de los archivos en lugar de las rutas completas
-Wallpaper=$(find "$Wallpapers_dir" -type f -printf "%f\n" | dmenu -i -l 25 )
+Wallpaper=$(find "$Wallpapers_dir" -type f -printf "%f\n" | dmenu -i -l 18 )
 
 # Verificar si se seleccionó una imagen
 if [ -n "$Wallpaper" ]; then

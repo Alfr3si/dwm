@@ -36,16 +36,16 @@ second_screen_only(){
 }
 
 # Opciones para seleccionar la configuración de pantalla
-OPCIONES="Pantalla principal\nDuplicar pantalla\nAmpliar pantalla\nSegunda pantalla"
+OPCIONES="Primary screen 󰹑 \nDuplicate screen  \nExtended screen 󰨵 󰹑 \nSecond screen 󱠍 "
 
 # Selecciona la opción usando dmenu
 ELECCION=$(echo -e "$OPCIONES" | dmenu -i )
 
 # Aplica la configuración seleccionada
 case "$ELECCION" in
-        "Pantalla principal") primary_screen ;;
-        "Duplicar pantalla") duplicate_screen ;;
-        "Ampliar pantalla") extended_screen ;;
-        "Segunda pantalla") second_screen_only ;;
+        "Primary screen 󰹑 ") primary_screen ;;
+        "Duplicate screen  ") duplicate_screen ;;
+        "Extended screen 󰨵 󰹑 ") extended_screen ;;
+        "Second screen 󱠍 ") second_screen_only ;;
         *) echo "No se seleccionó ninguna opción válida." ;;
 esac
