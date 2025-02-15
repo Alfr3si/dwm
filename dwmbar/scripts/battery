@@ -31,6 +31,10 @@ while read line; do
     printf "^c#fe213b^$IC_PLUG 100%%^d^ "
     #Charging
   elif ! echo "$line" | grep "Unknown" > /dev/null; then
-    printf "^c#a7fe21^$IC_CURRENT $percent%%^d^ "
+    if [ $percent -eq "100" ]; then
+       printf "^c#fe213b^$IC_PLUG 100%%^d^ "
+    else
+	printf "^c#a7fe21^$IC_CURRENT $percent%%^d^ "
+    fi
   fi
 done < /tmp/acpi_info
