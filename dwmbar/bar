@@ -1,6 +1,4 @@
 #!/bin/bash
-
-Clock="$($Dir/clock)"
 Dir="$HOME/.config/dwm/dwmbar/scripts"
 while [[ true ]]; do 
   Clock2="$($Dir/clock2)"

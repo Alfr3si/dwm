@@ -43,9 +43,9 @@ ELECCION=$(echo -e "$OPCIONES" | dmenu -i )
 
 # Aplica la configuración seleccionada
 case "$ELECCION" in
-        "Primary screen 󰹑 ") primary_screen ;;
-        "Duplicate screen  ") duplicate_screen ;;
-        "Extended screen 󰨵 󰹑 ") extended_screen ;;
-        "Second screen 󱠍 ") second_screen_only ;;
+        "Primary screen 󰹑 ") primary_screen && notify-send -u low "Screen 󰹑 " "Primary";;
+        "Duplicate screen  ") duplicate_screen && notify-send -u low "Screen  " "Duplicate" ;;
+        "Extended screen 󰨵 󰹑 ") extended_screen && notify-send -u low "Screen 󰨵 󰹑 " "Extended";;
+        "Second screen 󱠍 ") second_screen_only && notify-send -u low "Screen 󰨵 󰹑 " "Second 󱠍 ";;
         *) echo "No se seleccionó ninguna opción válida." ;;
 esac

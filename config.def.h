@@ -67,12 +67,12 @@ static const char *termcmd[]  = { "st", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-  	{ 0, XK_F1, spawn, SHCMD("pamixer -t && notify-send -t 1000 \"Volumen: mute  \"") },
-  	{ 0, XK_F2, spawn, SHCMD("pamixer --decrease 5 && notify-send -t 1000 \"Volumen: $(pamixer --get-volume)%\"") },
-	{ 0, XK_F3, spawn, SHCMD("pamixer --increase 5 && notify-send -t 1000 \"Volumen: $(pamixer --get-volume)%\"") },
-	{ 0, XK_F5, spawn, SHCMD("brightnessctl set 5%- && sleep 0.1 && notify-send -t 1000 \"Brillo: $(brightnessctl g | awk '{print int($1 / 21333 * 100)}')%\"") },
-	{ 0, XK_F6, spawn, SHCMD("brightnessctl set +5% && sleep 0.1 && notify-send -t 1000 \"Brillo: $(brightnessctl g | awk '{print int($1 / 21333 * 100)}')%\"") },		
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+  	{ 0, XK_F1, spawn, SHCMD("pamixer -t && notify-send -u low '  Volumen' 'Mute 󰜺 '") },
+	{ 0, XK_F2, spawn, SHCMD("pamixer --decrease 5 && notify-send -u low '  Volumen' \"$(pamixer --get-volume)%\"") },
+	{ 0, XK_F3, spawn, SHCMD("pamixer --increase 5 && notify-send -u low '  Volumen' \"$(pamixer --get-volume)%\"") },
+	{ 0, XK_F5, spawn, SHCMD("brightnessctl set 5%- && sleep 0.1 && notify-send -u low ' Brillo' \"$(brightnessctl g | awk '{print int($1 / 21333 * 100)}')%\"") },
+	{ 0, XK_F6, spawn, SHCMD("brightnessctl set +5% && sleep 0.1 && notify-send -u low ' Brillo' \"$(brightnessctl g | awk '{print int($1 / 21333 * 100)}')%\"") },
+  	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
