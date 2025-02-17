@@ -67,9 +67,9 @@ static const char *termcmd[]  = { "st", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-  	{ 0, XK_F1, spawn, SHCMD("pamixer -t && pkill -RTMIN+1 dwmblocks") },
-	{ 0, XK_F2, spawn, SHCMD("pamixer --decrease 5 && pkill -RTMIN+1 dwmblocks") },
-	{ 0, XK_F3, spawn, SHCMD("pamixer --increase 5 && pkill -RTMIN+1 dwmblocks") },
+  	{ 0, XK_F1, spawn, SHCMD("pamixer -t && pkill -RTMIN+10 dwmblocks") },
+	{ 0, XK_F2, spawn, SHCMD("pamixer --decrease 5 && pkill -RTMIN+10 dwmblocks") },
+	{ 0, XK_F3, spawn, SHCMD("pamixer --increase 5 && pkill -RTMIN+10 dwmblocks") },
 	{ 0, XK_F5, spawn, SHCMD("brightnessctl set 5%- && sleep 0.1 && notify-send -u low ' Brillo' \"$(brightnessctl g | awk '{print int($1 / 21333 * 100)}')%\"") },
 	{ 0, XK_F6, spawn, SHCMD("brightnessctl set +5% && sleep 0.1 && notify-send -u low ' Brillo' \"$(brightnessctl g | awk '{print int($1 / 21333 * 100)}')%\"") },
   	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
@@ -116,9 +116,6 @@ static const Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-	{ ClkStatusText,        0,              Button1,        sigstatusbar,   {.i = 1} },
-	{ ClkStatusText,        0,              Button2,        sigstatusbar,   {.i = 2} },
-	{ ClkStatusText,        0,              Button3,        sigstatusbar,   {.i = 3} },
 	{ ClkStatusText,        0,              Button1,        sigstatusbar,   {.i = 1} },
 	{ ClkStatusText,        0,              Button2,        sigstatusbar,   {.i = 2} },
 	{ ClkStatusText,        0,              Button3,        sigstatusbar,   {.i = 3} },
