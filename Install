@@ -25,6 +25,7 @@ dotfiles(){
   repo_st="https://github.com/Alfr3si/st.git"
   repo_dmenu="https://github.com/Alfr3si/dmenu.git"
   repo_dwmblocks="https://github.com/Alfr3si/dwmblocks.git"
+  repo
   echo "
 ################################################
 #              Clonando Dotfiles               #
@@ -40,6 +41,7 @@ dotfiles(){
   echo -e "\nClonando dwmblocks..."
   git clone "${repo_dmenu}" "${ruta}/dmenu"
   echo -e "\nDotfiles listos"
+  git clone 
 }
 compilar(){
   clear
@@ -48,6 +50,10 @@ compilar(){
 #           Compilacion de programas           #
 ################################################
 "
+  echo "Exportando ruta de scripts a .bashrc"
+  echo 'export PATH="$HOME/.local/share/dwm/dwm/scripts/:$PATH"' >> "$HOME/.bashrc"
+  sleep 1
+  source "$HOME/.bashrc"
   dir_main="${HOME}/.local/share/dwm/"
   dir_dwm="${HOME}/.local/share/dwm/dwm/"
   dir_st="${HOME}/.local/share/dwm/st/"
@@ -115,7 +121,7 @@ echo -e "build-essential libxft-dev libxinerama-dev libx11-dev wget unzip\n"
 echo "Desea proceder(y/n)?"
 read y_or_n
 if [[ "$y_or_n" == "y" || "$y_or_n" == "Y" ]]; then
-  sudo apt install -y build-essential libxft-dev libxinerama-dev libx11-dev wget unzip  
+  sudo apt install -y build-essential libxft-dev libxinerama-dev libx11-dev wget unzip 
   echo "Herramientas de compilacion instaladas"
   break
 elif [[ "$y_or_n" == "n" || "$y_or_n" == "N" ]]; then
@@ -144,7 +150,9 @@ echo -e "base-devel libx11 libxft libxinerama wget unzip\n"
 echo "Desea proceder(y/n)?"
 read y_or_n
 if [[ "$y_or_n" == "y" || "$y_or_n" == "Y" ]]; then
-  sudo pacman -S --noconfirm base-devel libx11 libxft libxinerama wget unzip
+  sudo pacman -S --noconfirm base-devel libx11 libxft libxinerama wget unzip \
+    pacman-contrib acpi brightnessctl pamixer pulseaudio pulseaudio-alsa \
+    pulseaudio-bluetooth pavucontrol dunst libnotify lsd feh network-manager-applet
   echo "Herramientas de compilacion instaladas"
   break
 elif [[ "$y_or_n" == "n" || "$y_or_n" == "N" ]]; then
