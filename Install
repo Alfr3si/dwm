@@ -21,10 +21,12 @@ nerdfont(){
 }
 dotfiles(){
   clear
-  ruta=${HOME}/.local/share/dwm/
+  ruta="${HOME}/.local/share/dwm/"
+  ruta_d="${HOME}/.config/"
   repo_st="https://github.com/Alfr3si/st.git"
   repo_dmenu="https://github.com/Alfr3si/dmenu.git"
   repo_dwmblocks="https://github.com/Alfr3si/dwmblocks.git"
+  repo_dunst="https://github.com/Alfr3si/dunst.git"
   repo
   echo "
 ################################################
@@ -40,6 +42,8 @@ dotfiles(){
   git clone "${repo_dwmblocks}" "${ruta}/dwmblocks"
   echo -e "\nClonando dwmblocks..."
   git clone "${repo_dmenu}" "${ruta}/dmenu"
+  echo -e "\nClonando dunst..."
+  git clone "${repo_dunst}" "${ruta_d}/dunst"
   echo -e "\nDotfiles listos"
   git clone 
 }
