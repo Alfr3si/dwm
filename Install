@@ -21,17 +21,23 @@ nerdfont(){
 }
 dotfiles(){
   clear
-  ruta=${HOME}/.config/
+  ruta=${HOME}/.local/share/dwm/
   repo_st="https://github.com/Alfr3si/st.git"
   repo_dmenu="https://github.com/Alfr3si/dmenu.git"
+  repo_dwmblocks="https://github.com/Alfr3si/dwmblocks.git"
   echo "
 ################################################
 #              Clonando Dotfiles               #
 ################################################
 "
-  echo "Clonando St..."
+  echo "Creando directorio dwm..."
+  mkdir -p "$ruta" 
+  sleep 1
+  echo -e "\nClonando St..."
   git clone "${repo_st}" "${ruta}/st" 
   echo -e "\nClonando dmenu..."
+  git clone "${repo_dwmblocks}" "${ruta}/dwmblocks"
+  echo -e "\nClonando dwmblocks..."
   git clone "${repo_dmenu}" "${ruta}/dmenu"
   echo -e "\nDotfiles listos"
 }
@@ -42,9 +48,11 @@ compilar(){
 #           Compilacion de programas           #
 ################################################
 "
-  dir_dwm="${HOME}/.config/dwm/"
-  dir_st="${HOME}/.config/st/"
-  dir_dmenu="${HOME}/.config/dmenu/"
+  dir_main="${HOME}/.local/share/dwm/"
+  dir_dwm="${HOME}/.local/share/dwm/dwm/"
+  dir_st="${HOME}/.local/share/dwm/st/"
+  dir_dmenu="${HOME}/.local/share/dwm/dmenu/"
+  dir_dwmblocks="${HOME}/.local/share/dwm/dwmblocks/"
   echo "Compilando dwm..."
   cd "$dir_dwm"
   sudo make install clean
@@ -58,8 +66,16 @@ compilar(){
   echo "Compilando dmenu"
   cd "$dir_dmenu"
   sudo make install clean
-  echo "dmenu compilado"
+  echo "dmenu compilado\n"
   sleep 1
+  echo "Compilando dwmblocks"
+  cd "$dir_dwmblocks"
+  sudo make install clean
+  echo "dwmblocks compilado\n"
+  sleep 1
+  echo "moviendo autostart.sh"
+  cd "$dir_dwm"
+  mv autostart.sh $dir_main
   clear 
   echo "
 ################################################
