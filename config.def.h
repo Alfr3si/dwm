@@ -10,7 +10,7 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "JetBrainsMono Nerd Font:style=Bold:size=13" };
+static const char *fonts[]          = { "JetBrainsMono Nerd Font:style=Bold:size=14" };
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_white[]       = "#ffffff";
 static const char col_gray3[]       = "#7a869f";
@@ -67,9 +67,9 @@ static const char *termcmd[]  = { "st", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-  	{ 0, XK_F1, spawn, SHCMD("pamixer -t && pkill -RTMIN+1 dwmblocks") },
-	{ 0, XK_F2, spawn, SHCMD("pamixer --decrease 5 && pkill -RTMIN+1 dwmblocks") },
-	{ 0, XK_F3, spawn, SHCMD("pamixer --increase 5 && pkill -RTMIN+1 dwmblocks") },
+  	{ 0, XK_F1, spawn, SHCMD("pamixer -t && pkill -RTMIN+10 dwmblocks") },
+	{ 0, XK_F2, spawn, SHCMD("pamixer --decrease 5 && pkill -RTMIN+10 dwmblocks") },
+	{ 0, XK_F3, spawn, SHCMD("pamixer --increase 5 && pkill -RTMIN+10 dwmblocks") },
 	{ 0, XK_F5, spawn, SHCMD("brightnessctl set 5%- && sleep 0.1 && notify-send -u low ' Brillo' \"$(brightnessctl g | awk '{print int($1 / 21333 * 100)}')%\"") },
 	{ 0, XK_F6, spawn, SHCMD("brightnessctl set +5% && sleep 0.1 && notify-send -u low ' Brillo' \"$(brightnessctl g | awk '{print int($1 / 21333 * 100)}')%\"") },
   	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
