@@ -14,7 +14,7 @@ static const char *fonts[]          = { "JetBrainsMono Nerd Font:style=Bold:size
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_white[]       = "#ffffff";
 static const char col_gray3[]       = "#7a869f";
-static const char col_gray2[]       = "#0f101a";
+static const char col_gray2[]       = "#20242c";
 static const char col_gray4[]       = "#4c566a";
 static const char col_marillo[]	    = "#FFF4B7";
 static const char col_grisillo[]    = "#C5D3E8";
