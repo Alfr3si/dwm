@@ -27,6 +27,7 @@ dotfiles(){
   repo_dmenu="https://github.com/Alfr3si/dmenu.git"
   repo_dwmblocks="https://github.com/Alfr3si/dwmblocks.git"
   repo_dunst="https://github.com/Alfr3si/dunst.git"
+  repo_dwm="https://github.com/Alfr3si/dwm"
   repo
   echo "
 ################################################
@@ -42,6 +43,8 @@ dotfiles(){
   git clone "${repo_dwmblocks}" "${ruta}/dwmblocks"
   echo -e "\nClonando dwmblocks..."
   git clone "${repo_dmenu}" "${ruta}/dmenu"
+  echo -e "\nClonando dwmblocks..."
+  git clone "${repo_dwm}" "${ruta}/dwm"
   echo -e "\nClonando dunst..."
   git clone "${repo_dunst}" "${ruta_d}/dunst"
   echo -e "\nDotfiles listos"
