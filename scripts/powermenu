@@ -3,9 +3,9 @@
 eleccion=$(printf "Poweroff \nReboot \nSuspend 󰤄\nLogout " | dmenu -i )
 
 case "$eleccion" in
-	"Poweroff ") systemctl poweroff ;;
-	"Reboot ") systemctl reboot ;;
-	"Suspend 󰤄") systemctl suspend ;;
-	"Logout ") kill -9 -1 ;;
+	"Poweroff ") loginctl poweroff ;;
+	"Reboot ") loginctl reboot ;;
+	"Suspend 󰤄") loginctl suspend ;;
+	"Logout ") loginctl kill -9 -1 ;;
 	*) exit 1 ;;
 esac
