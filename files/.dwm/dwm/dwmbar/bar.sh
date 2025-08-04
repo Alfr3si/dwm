@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DIR="$HOME/.local/share/dwm/dwm/dwmbar/scripts/"
+DIR="$HOME/.dwm/dwm/dwmbar/scripts/"
 while [[ true ]]; do
 	mem="$($DIR/memory)"
 	vol=$($DIR/volume)

@@ -18,4 +18,5 @@ PS1='\[\e[38;5;238m\] \[\e[48;5;238m\]\[\e[38;5;39m\] \w \[\e[0m\]\[\e[38;5;2
 if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
 fi
-export PATH="$HOME/.local/share/dwm/dwm/scripts/:$PATH"
+
+export PATH="$HOME/.dwm/dwm/scripts/:$PATH"

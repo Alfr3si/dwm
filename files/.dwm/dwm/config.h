@@ -76,8 +76,7 @@ static char dmenumon[2] =
     "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = {"dmenu_run", NULL};
 static const char *termcmd[] = {"st", NULL};
-static const char *keymap[] = {
-    "/home/alfr3d/.local/share/dwm/dwm/script/layout", NULL};
+static const char *keymap[] = {"/home/alfr3d/.dwm/dwm/script/layout", NULL};
 static const Key keys[] = {
     /* modifier                     key        function        argument */
     {0, XK_F1, spawn, SHCMD("pamixer -t")},

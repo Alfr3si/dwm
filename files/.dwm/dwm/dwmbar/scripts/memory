@@ -1,5 +1,5 @@
 #!/bin/bash
 
 memory="$(free -h | awk '/^Mem/ {print $3"/"$2}' | sed s/i//g) "
-#echo "^c#ffffff^  ^d^ $memory"
-echo "   $memory"
+echo "^c#ffffff^  ^d^ $memory"
+#echo "   $memory"
