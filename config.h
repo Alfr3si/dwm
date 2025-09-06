@@ -49,10 +49,10 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
-	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
+    /* symbol     arrange function */
+    {"  ", tile}, /* first entry is default */
+    {"  ", NULL}, /* no layout function means floating behavior */
+    {"  ", monocle},
 };
 
 /* key definitions */
@@ -68,11 +68,17 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
+static const char *dmenucmd[] = { "dmenu_run", NULL };
 static const char *termcmd[]  = { "st", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
+
+        {      0, 			XK_F1,	   spawn,   	   SHCMD("pamixer -t") },
+        {      0, 			XK_F2,	   spawn,   	   SHCMD("pamixer --decrease 5") },
+        {      0, 			XK_F3,	   spawn,   	   SHCMD("pamixer --increase 5") },
+        {      0, 			XK_F5,	   spawn,   	   SHCMD("brightnessctl set 5%-") },
+        {      0, 			XK_F6,	   spawn,   	   SHCMD("brightnessctl set +5%") },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
