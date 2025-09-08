@@ -1,0 +1,13 @@
+
+#!/bin/sh
+
+# Verifica actualizaciones de Pacman
+    if ! updates_arch=$(checkupdates 2> /dev/null | wc -l); then
+      updates_arch=0
+    fi
+# Verifica actualizaciones de AUR (yay)
+    if ! updates_aur=$(yay -Qua --aur --quiet | wc -l); then
+      updates_aur=0
+    fi
+#  actualizaciones
+    echo " $updates_arch(AUR:$updates_aur)"

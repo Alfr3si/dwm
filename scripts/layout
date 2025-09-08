@@ -1,0 +1,11 @@
+#!/bin/bash
+#detected the layout actual
+
+layout=$(setxkbmap -query | grep layout | awk '{print $2}')
+
+#alternar entre los layouts
+if [[ "$layout" == "us" ]]; then
+    setxkbmap -layout latam
+else
+    setxkbmap -layout us
+fi

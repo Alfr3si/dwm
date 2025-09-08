@@ -1,0 +1,24 @@
+#!/bin/bash
+
+DIR="$HOME/.dwm/dwm/dwmbar/scripts/"
+last_UPD=0
+UPD_interval=$((60*60)) #1 h
+while [[ true ]]; do
+	mem=$($DIR/memory)
+	vol=$($DIR/volume)
+	key=$($DIR/keymap)
+	bat=$($DIR/battery)
+	clock=$($DIR/clock)
+	cpuT=$($DIR/cpuTemp)
+	cpu=$($DIR/cpu)
+	bright=$($DIR/brightness)
+
+	# se ejecuta solo si
+	now=$(date +%s)
+	if ((now - last_UPD > UPD_interval )); then
+	   updates=$($DIR/pacman)
+	   last_UPD=$now
+	fi
+	xsetroot -name "$mem $cpu $cpuT $updates $vol $bright $key $bat $clock"
+	sleep 1
+done

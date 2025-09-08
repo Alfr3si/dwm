@@ -1,0 +1,10 @@
+#!/bin/bash
+
+layout=$(setxkbmap -query | grep layout | awk '{print $2}')
+
+# Comparamos
+if [[ "$layout" == "latam" ]]; then
+    echo " es "
+elif [[ "$layout" == "us" ]]; then
+    echo " us "
+fi

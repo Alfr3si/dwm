@@ -1,0 +1,23 @@
+#!/bin/bash
+
+vol(){
+  pamixer --get-volume
+}
+
+str(){
+  echo "$1"
+}
+
+if [ "$(pamixer --get-mute)" = "true" ]; then
+  str "   "
+  exit 0
+fi
+
+v=$(vol)
+if [ "$v" -eq "100" ]; then
+  str "  100% "
+elif [ "$v" -ge "30" ]; then
+  str "  $v% "
+else 
+  str "  $v% "
+fi

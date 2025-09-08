@@ -1,0 +1,13 @@
+#!/bin/bash
+
+status=$(brightnessctl get)
+max=$(brightnessctl max)
+percent=$((100 * status / max))
+
+if [ "$percent" -lt 35 ]; then
+    echo "󰃝 $percent% "
+elif [ "$percent" -lt 75 ]; then
+    echo "󰃟 $percent% "
+else
+    echo "󰃠 $percent% "
+fi
