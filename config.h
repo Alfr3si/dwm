@@ -71,6 +71,9 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", NULL };
 static const char *termcmd[]  = { "st", NULL };
 
+/*My Scripts*/
+static const char *keymap[] = {"/home/alfr3d/.dwm/dwm/scripts/set_xkbmap", NULL};
+
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 
@@ -79,6 +82,7 @@ static const Key keys[] = {
         {      0, 			XK_F3,	   spawn,   	   SHCMD("pamixer --increase 5") },
         {      0, 			XK_F5,	   spawn,   	   SHCMD("brightnessctl set 5%-") },
         {      0, 			XK_F6,	   spawn,   	   SHCMD("brightnessctl set +5%") },
+        {ControlMask | Mod1Mask,        XK_space,  spawn,	   {.v = keymap}},
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
