@@ -2,7 +2,7 @@
 
 DIR="$HOME/.dwm/dwm/dwmbar/scripts/"
 last_UPD=0
-UPD_interval=$((60*60)) #1 h
+UPD_interval=$((60*180)) #1 h
 while [[ true ]]; do
 	mem=$($DIR/memory)
 	vol=$($DIR/volume)
