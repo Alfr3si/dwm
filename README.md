@@ -38,7 +38,7 @@ sudo xbps-install -y base-devel libx11-devel libxft-devel libxinerama-devel wget
 - sensors
 - pywal16
 - network-manager-applet
-- Font: UbuntuMono Nerd Font
+- Font: JetBrainsMono Nerd Font
 
 # Tip
 
