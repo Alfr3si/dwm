@@ -26,7 +26,7 @@ static const int topbar = 1;      /* 0 means bottom bar */
 static const int user_bh = 26; /* 0 means that dwm will calculate bar height, >=
                                   1 means dwm will user_bh as bar height */
 static const char *fonts[] = {
-    "JetBrainsMono Nerd Font:size=13",
+    "JetBrainsMono Nerd Font:size=13", "NotoSansMono Nerd Font:size=13",
     "NotoColorEmoji:pixelsize=13:antialias=true:autohint=true"};
 static const char dmenufont[] = "monospace:size=10";
 static char normbgcolor[] = "#222222";
@@ -53,6 +53,7 @@ static const Rule rules[] = {
     {"discord", NULL, NULL, 1 << 6, 0, -1},
     {"firefox", NULL, NULL, 1 << 1, 0, -1},
     {"Brave", NULL, NULL, 1 << 1, 0, -1},
+    {"Nsxiv", NULL, NULL, 0, 1, -1},
 };
 
 /* layout(s) */
