@@ -25,8 +25,8 @@ delta_total=$((total_after - total_before))
 delta_usage=$((100 * (delta_total - delta_idle) / delta_total))
 
 if [ "$delta_usage" -lt 10 ]; then
-    echo "  0${delta_usage}% "
+    echo " 0${delta_usage}% "
 else
-    echo "  ${delta_usage}% "
+    echo " ${delta_usage}% "
 fi
 
