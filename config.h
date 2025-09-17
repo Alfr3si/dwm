@@ -98,9 +98,9 @@ static const char *keymap[] = {"/home/alfr3d/.dwm/dwm/scripts/set_xkbmap",
 static const Key keys[] = {
     /* modifier                     key        function        argument */
 
-    {0, XK_F1, spawn, SHCMD("pamixer -t")},
-    {0, XK_F2, spawn, SHCMD("pamixer --decrease 5")},
-    {0, XK_F3, spawn, SHCMD("pamixer --increase 5")},
+    {0, XK_F1, spawn, SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle")},
+    {0, XK_F2, spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%")},
+    {0, XK_F3, spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%")},
     {0, XK_F5, spawn, SHCMD("brightnessctl set 5%-")},
     {0, XK_F6, spawn, SHCMD("brightnessctl set +5%")},
     {ControlMask | Mod1Mask, XK_space, spawn, {.v = keymap}},
