@@ -22,7 +22,7 @@ sudo apt install -y build-essential libxft-dev libxinerama-dev libx11-dev wget u
 sudo xbps-install -y base-devel libx11-devel libxft-devel libxinerama-devel wget unzip
 ```
 
-## necessary
+## Install the following packages
 
 - xorg
 - xorg-xinit or xinit
@@ -39,8 +39,9 @@ sudo xbps-install -y base-devel libx11-devel libxft-devel libxinerama-devel wget
 - pywal16
 - network-manager-applet
 - Font: JetBrainsMono Nerd Font
+- [nsxiv](https://codeberg.org/nsxiv/nsxiv)
 
-# Tip
+# Tips
 
 ### Add in this path "/etc/X11/xorg.conf.d/30-touchpad.conf"
 
@@ -58,7 +59,7 @@ Section "InputClass"
     Identifier "mouse"
     MatchIsPointer "on"
     MatchDriver "libinput"
-    Option "NaturalScrolling" "true"
+    Option "NaturalScrolling" "false"
 EndSection
 ```
 
