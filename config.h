@@ -91,19 +91,28 @@ static char dmenumon[2] =
 static const char *dmenucmd[] = {"dmenu_run", NULL};
 static const char *termcmd[] = {"st", NULL};
 
-/*My Scripts*/
-static const char *keymap[] = {"/home/alfr3d/.dwm/dwm/scripts/set_xkbmap",
-                               NULL};
-
 static const Key keys[] = {
     /* modifier                     key        function        argument */
 
-    {0, XK_F1, spawn, SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle")},
-    {0, XK_F2, spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%")},
-    {0, XK_F3, spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%")},
-    {0, XK_F5, spawn, SHCMD("brightnessctl set 5%-")},
-    {0, XK_F6, spawn, SHCMD("brightnessctl set +5%")},
-    {ControlMask | Mod1Mask, XK_space, spawn, {.v = keymap}},
+    /* Volumen */
+    {0, XK_F1, spawn,
+     SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+6 "
+           "dwmblocks")},
+    {0, XK_F2, spawn,
+     SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5% && pkill -RTMIN+6 "
+           "dwmblocks")},
+    {0, XK_F3, spawn,
+     SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -RTMIN+6 "
+           "dwmblocks")},
+    /* Brillo */
+    {0, XK_F5, spawn,
+     SHCMD("brightnessctl set 5%- && pkill -RTMIN+7 dwmblocks")},
+    {0, XK_F6, spawn,
+     SHCMD("brightnessctl set +5% && pkill -RTMIN+7 dwmblocks")},
+    /* Cambiar keymap */
+    {ControlMask | Mod1Mask, XK_space, spawn,
+     SHCMD("/home/alfr3d/.dwm/dwm/scripts/set_xkbmap && pkill -RTMIN+8 "
+           "dwmblocks")},
     {MODKEY, XK_p, spawn, {.v = dmenucmd}},
     {MODKEY | ShiftMask, XK_Return, spawn, {.v = termcmd}},
     {MODKEY, XK_b, togglebar, {0}},
