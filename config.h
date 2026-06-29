@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx = 1; /* border pixel of windows */
+static const unsigned int borderpx = 0; /* border pixel of windows */
 static const unsigned int snap = 32;    /* snap pixel */
 static const unsigned int gappih = 10;  /* horiz inner gap between windows */
 static const unsigned int gappiv = 10;  /* vert inner gap between windows */
@@ -10,7 +10,7 @@ static const unsigned int gappoh =
 static const unsigned int gappov =
     10; /* vert outer gap between windows and screen edge */
 static const int smartgaps =
-    0; /* 1 means no outer gap when there is only one window */
+    1; /* 1 means no outer gap when there is only one window */
 static const unsigned int systraypinning =
     0; /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor
           X */
@@ -29,12 +29,12 @@ static const char *fonts[] = {
     "JetBrainsMono Nerd Font:size=13", "NotoSansMono Nerd Font:size=13",
     "NotoColorEmoji:pixelsize=13:antialias=true:autohint=true"};
 static const char dmenufont[] = "monospace:size=10";
-static char normbgcolor[] = "#222222";
+static char normbgcolor[] = "#30364F";
 static char normbordercolor[] = "#444444";
-static char normfgcolor[] = "#bbbbbb";
-static char selfgcolor[] = "#eeeeee";
+static char normfgcolor[] = "#708993";
+static char selfgcolor[] = "#f8f8f2";
 static char selbordercolor[] = "#005577";
-static char selbgcolor[] = "#005577";
+static char selbgcolor[] = "#8CC0EB";
 static char *colors[][3] = {
     /*               fg           bg           border   */
     [SchemeNorm] = {normfgcolor, normbgcolor, normbordercolor},
@@ -42,7 +42,7 @@ static char *colors[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = {"1", " ", "3", "4", "5", "6", " ", "8", "9"};
+static const char *tags[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -115,7 +115,7 @@ static const Key keys[] = {
      SHCMD("/home/alfr3d/.dwm/dwm/scripts/set_xkbmap && pkill -RTMIN+8 "
            "dwmblocks")},
     {MODKEY, XK_p, spawn, {.v = dmenucmd}},
-    {MODKEY | ShiftMask, XK_Return, spawn, {.v = termcmd}},
+    {MODKEY, XK_Return, spawn, {.v = termcmd}},
     {MODKEY, XK_b, togglebar, {0}},
     {MODKEY, XK_j, focusstack, {.i = +1}},
     {MODKEY, XK_k, focusstack, {.i = -1}},
@@ -128,6 +128,7 @@ static const Key keys[] = {
     {MODKEY | ShiftMask, XK_c, killclient, {0}},
     {MODKEY, XK_t, setlayout, {.v = &layouts[0]}},
     {MODKEY, XK_f, setlayout, {.v = &layouts[1]}},
+  	{MODKEY|ShiftMask, XK_f, fullscreen, {0}},
     {MODKEY, XK_m, setlayout, {.v = &layouts[2]}},
     {MODKEY, XK_space, setlayout, {0}},
     {MODKEY | ShiftMask, XK_space, togglefloating, {0}},
