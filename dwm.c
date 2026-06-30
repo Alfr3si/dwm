@@ -253,6 +253,7 @@ static void destroynotify(XEvent *e);
 static void detach(Client *c);
 static void detachstack(Client *c);
 static Monitor *dirtomon(int dir);
+static Monitor *numtomon(int num);
 static void drawbar(Monitor *m);
 static void drawbars(void);
 static int drawstatusbar(Monitor *m, int bh, char *text);
@@ -261,6 +262,7 @@ static void expose(XEvent *e);
 static void focus(Client *c);
 static void focusin(XEvent *e);
 static void focusmon(const Arg *arg);
+static void focusnthmon(const Arg *arg);
 static void focusstack(const Arg *arg);
 static Atom getatomprop(Client *c, Atom prop);
 static Picture geticonprop(Window w, unsigned int *icw, unsigned int *ich);
@@ -327,6 +329,7 @@ static void spawn(const Arg *arg);
 static Monitor *systraytomon(Monitor *m);
 static void tag(const Arg *arg);
 static void tagmon(const Arg *arg);
+static void tagnthmon(const Arg *arg);
 static void tile(Monitor *m);
 static void togglebar(const Arg *arg);
 static void togglefloating(const Arg *arg);
@@ -571,15 +574,9 @@ void buttonpress(XEvent *e) {
   }
   if (ev->window == selmon->barwin) {
     i = x = 0;
-    unsigned int occ = 0;
-    for (c = m->clients; c; c = c->next)
-      occ |= c->tags == TAGMASK ? 0 : c->tags;
-    do {
-      /* Do not reserve space for vacant tags */
-      if (!(occ & 1 << i || m->tagset[m->seltags] & 1 << i))
-        continue;
+    do
       x += TEXTW(tags[i]);
-    } while (ev->x >= x && ++i < LENGTH(tags));
+    while (ev->x >= x && ++i < LENGTH(tags));
     if (i < LENGTH(tags)) {
       click = ClkTagBar;
       arg.ui = 1 << i;
@@ -946,6 +943,18 @@ Monitor *dirtomon(int dir) {
   return m;
 }
 
+Monitor *
+numtomon(int num)
+{
+	Monitor *m = NULL;
+	int i = 0;
+
+	for(m = mons, i=0; m->next && i < num; m = m->next){
+		i++;
+	}
+	return m;
+}
+
 int drawstatusbar(Monitor *m, int bh, char *stext) {
   int ret, i, j, w, x, len;
   short isCode = 0;
@@ -1082,19 +1091,20 @@ void drawbar(Monitor *m) {
 
   resizebarwin(m);
   for (c = m->clients; c; c = c->next) {
-    occ |= c->tags == TAGMASK ? 0 : c->tags;
+    occ |= c->tags;
     if (c->isurgent)
       urg |= c->tags;
   }
   x = 0;
   for (i = 0; i < LENGTH(tags); i++) {
-    /* Do not draw vacant tags */
-    if (!(occ & 1 << i || m->tagset[m->seltags] & 1 << i))
-      continue;
     w = TEXTW(tags[i]);
     drw_setscheme(
         drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
     drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
+		if (occ & 1 << i)
+			drw_rect(drw, x + boxs, boxs, boxw, boxw,
+				m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
+				urg & 1 << i);
     x += w;
   }
   w = TEXTW(m->ltsymbol);
@@ -1195,6 +1205,22 @@ void focusmon(const Arg *arg) {
   selmon = m;
   focus(NULL);
 }
+
+void
+focusnthmon(const Arg *arg)
+{
+	Monitor *m;
+
+	if (!mons->next)
+		return;
+
+	if ((m = numtomon(arg->i)) == selmon)
+		return;
+	unfocus(selmon->sel, 0);
+	selmon = m;
+	focus(NULL);
+}
+
 
 void focusstack(const Arg *arg) {
   Client *c = NULL, *i;
@@ -2431,6 +2457,14 @@ void tagmon(const Arg *arg) {
   if (!selmon->sel || !mons->next)
     return;
   sendmon(selmon->sel, dirtomon(arg->i));
+}
+
+void
+tagnthmon(const Arg *arg)
+{
+	if (!selmon->sel || !mons->next)
+		return;
+	sendmon(selmon->sel, numtomon(arg->i));
 }
 
 void tile(Monitor *m) {
