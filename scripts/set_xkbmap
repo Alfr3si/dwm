@@ -5,7 +5,7 @@ layout=$(setxkbmap -query | grep layout | awk '{print $2}')
 
 #alternar entre los layouts
 if [[ "$layout" == "us" ]]; then
-    setxkbmap -layout latam
+    setxkbmap -layout latam && notify-send -u low "dwm - keyboard" "keyboard changed to ES"
 else
-    setxkbmap -layout us
+    setxkbmap -layout us && notify-send -u low "dwm - keyboard" "keyboard changed to US"
 fi

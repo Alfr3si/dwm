@@ -114,8 +114,7 @@ static const Key keys[] = {
      SHCMD("brightnessctl set +5% && pkill -RTMIN+7 dwmblocks")},
     /* Cambiar keymap */
     {ControlMask | Mod1Mask, XK_space, spawn,
-     SHCMD("/home/alfr3d/.dwm/dwm/scripts/set_xkbmap && pkill -RTMIN+8 "
-           "dwmblocks")},
+     SHCMD("/home/alfr3d/.config/dwm/dwm/scripts/set_xkbmap")},
     {MODKEY, XK_p, spawn, {.v = dmenucmd}},
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
     {MODKEY, XK_b, togglebar, {0}},
