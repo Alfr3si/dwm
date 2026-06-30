@@ -28,8 +28,8 @@ static const int topbar = 1;      /* 0 means bottom bar */
 static const int user_bh = 26; /* 0 means that dwm will calculate bar height, >=
                                   1 means dwm will user_bh as bar height */
 static const char *fonts[] = {
-    "JetBrainsMono Nerd Font:size=13", "NotoSansMono Nerd Font:size=13",
-    "NotoColorEmoji:pixelsize=13:antialias=true:autohint=true"};
+    "JetBrainsMono Nerd Font:size=12", "NotoSansMono Nerd Font:size=12",
+    "NotoColorEmoji:pixelsize=12:antialias=true:autohint=true"};
 static const char dmenufont[] = "monospace:size=10";
 static char normbgcolor[] = "#30364F";
 static char normbordercolor[] = "#444444";
@@ -44,7 +44,9 @@ static char *colors[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+static const char *tags[] = {"", "", "3", "4", "5", "", "", "8", "9"};
+static const char *tagsalt[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const int momentaryalttags = 0; /* 1 means alttags will show only when key is held down*/
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -141,6 +143,7 @@ static const Key keys[] = {
     {MODKEY | ShiftMask, XK_0, tag, {.ui = ~0}},
     {MODKEY, XK_comma, focusmon, {.i = -1}},
     {MODKEY, XK_period, focusmon, {.i = +1}},
+	{ MODKEY,  XK_n, togglealttag, {0} },
     {MODKEY | ShiftMask, XK_comma, tagmon, {.i = -1}},
     {MODKEY | ShiftMask, XK_period, tagmon, {.i = +1}},
     {MODKEY, XK_F5, xrdb, {.v = NULL}},
